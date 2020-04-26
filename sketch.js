@@ -27,7 +27,7 @@ function keyPressed() {
 }
 
 function Star() {
-  this.y = -1 * random(10);
+  this.y = -1 * random(100);
   this.x = random(500);
   this.size = random(20);
 
@@ -37,9 +37,9 @@ function Star() {
   }
 
   this.drop = function() {
-    this.y += 1 / this.size * 100;
+    this.y += this.size;
     if (this.y > 700) {
-      this.y = -1 * random(10);
+      this.y = -1 * random(100);
       this.x = random(500);
       this.size = random(20);
     }
