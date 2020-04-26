@@ -1,11 +1,15 @@
+var game_over = 0;
 var rocket;
 var stars = [];
+var asteroids = [];
 
 function setup() { 
   createCanvas(500, 700);
   rocket = new Rocket();
   for (i = 0; i <= 25; i++)
     stars.push(new Star());
+  for (i = 0; i <= 10; i++)
+    asteroids.push(new Asteroid());
 } 
 
 function draw() { 
@@ -14,8 +18,14 @@ function draw() {
     stars[i].show();
     stars[i].drop();
   }
-  rocket.show();
-  rocket.move();
+  if (game_over == 0) {
+    for (i = 0; i < asteroids.length; i++) {
+      asteroids[i].show();
+      asteroids[i].drop();
+    }
+    rocket.show();
+    rocket.move();
+  } 
 }
 
 function keyPressed() {
@@ -23,6 +33,27 @@ function keyPressed() {
     rocket.dir -= 1;
   } else if (keyCode === RIGHT_ARROW && rocket.dir <= 2) {
     rocket.dir += 1;
+  }
+}
+
+function Asteroid() {
+  this.x = random(500);
+  this.y = -1 * random(2800);
+
+  this.show = function() {
+    fill("red");
+    rect(this.x, this.y, 50, 50);
+  }
+
+  this.drop = function() {
+    if (this.y >= 500 && this.y <= 650 &&
+      this.x >= rocket.abs_x - 50 && this.x <= rocket.abs_x + 50)
+      game_over = 1;
+    this.y += 10;
+    if (this.y > 700) {
+      this.x = random(500);
+      this.y = -1 * random(2800);
+    }
   }
 }
 
@@ -47,12 +78,14 @@ function Star() {
 }
 
 function Rocket() {
+  this.abs_x = 0
   this.x = 0;
   this.dir = 0;
 
   this.show = function() {
+    this.abs_x = 225 + this.x;
     fill("grey");
-    rect(225 + this.x, 550, 50, 100);
+    rect(this.abs_x, 550, 50, 100);
   }
 
   this.move = function() {
