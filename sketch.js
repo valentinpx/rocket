@@ -25,7 +25,13 @@ function draw() {
     }
     rocket.show();
     rocket.move();
-  } 
+  } else {
+    fill("white")
+    textSize(50)
+    textAlign(CENTER, CENTER)
+    textFont("Courier");
+    text("Game Over", 00, 300, 500, 100)
+  }
 }
 
 function keyPressed() {
