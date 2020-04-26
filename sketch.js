@@ -2,6 +2,7 @@ var game_over = 0;
 var rocket;
 var stars = [];
 var asteroids = [];
+var score = 0;
 
 function setup() { 
   createCanvas(500, 700);
@@ -25,12 +26,16 @@ function draw() {
     }
     rocket.show();
     rocket.move();
+    fill("blue")
+    textSize(30)
+    textFont("Courier");
+    text("Score: " + score, 10, 10, 100, 100);
   } else {
     fill("white")
     textSize(50)
     textAlign(CENTER, CENTER)
     textFont("Courier");
-    text("Game Over", 00, 300, 500, 100)
+    text("Game Over\nscore: " + score, 00, 300, 500, 100)
   }
 }
 
@@ -41,6 +46,7 @@ function keyPressed() {
     rocket.dir += 1;
   else if (keyCode === 32 && game_over == 1) {
     game_over = 0;
+    score = 0;
     for (i = 0; i < asteroids.length; i++) {
       asteroids[i].x = random(500);
       asteroids[i].y = -1 * random(2800);
@@ -65,6 +71,7 @@ function Asteroid() {
     if (this.y > 700) {
       this.x = random(500);
       this.y = -1 * random(2800);
+      score += 10;
     }
   }
 }
