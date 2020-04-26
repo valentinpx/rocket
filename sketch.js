@@ -35,10 +35,16 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === LEFT_ARROW && rocket.dir >= -2) {
+  if (keyCode === LEFT_ARROW && rocket.dir >= -2)
     rocket.dir -= 1;
-  } else if (keyCode === RIGHT_ARROW && rocket.dir <= 2) {
+  else if (keyCode === RIGHT_ARROW && rocket.dir <= 2)
     rocket.dir += 1;
+  else if (keyCode === 32 && game_over == 1) {
+    game_over = 0;
+    for (i = 0; i < asteroids.length; i++) {
+      asteroids[i].x = random(500);
+      asteroids[i].y = -1 * random(2800);
+    }
   }
 }
 
