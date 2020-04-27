@@ -28,8 +28,9 @@ function draw() {
     rocket.move();
     fill("blue")
     textSize(30)
+    textAlign(LEFT, LEFT);
     textFont("Courier");
-    text("Score: " + score, 10, 10, 100, 100);
+    text("Score [" + score + "]", 10, 10, 450, 100);
   } else {
     fill("white")
     textSize(50)
