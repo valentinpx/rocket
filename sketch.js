@@ -1,8 +1,16 @@
+const colors = ["#FFCB60", "#926D27", "#75571F", "#876A32", "#B68831"];
+const path = "/rocket.png";
+
 var game_over = 0;
 var rocket;
+var img;
 var stars = [];
 var asteroids = [];
 var score = 0;
+
+function preload() {
+  img = loadImage(path);
+}
 
 function setup() { 
   createCanvas(500, 700);
@@ -58,9 +66,10 @@ function keyPressed() {
 function Asteroid() {
   this.x = random(500);
   this.y = -1 * random(2800);
+  this.color = random(colors);
 
   this.show = function() {
-    fill("red");
+    fill(this.color);
     rect(this.x, this.y, 50, 50);
   }
 
@@ -104,8 +113,8 @@ function Rocket() {
 
   this.show = function() {
     this.abs_x = 225 + this.x;
-    fill("grey");
-    rect(this.abs_x, 550, 50, 100);
+    image(img, this.abs_x, 550, 50, 100);
+    // rect(this.abs_x, 550, 50, 100);
   }
 
   this.move = function() {
