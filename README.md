@@ -1,5 +1,5 @@
 # Rocket
-Réalisé en 24h lors d'une Game Jam à EPitech Lille,
+Réalisé en 24h lors d'une Game Jam à Epitech Lille,
 Rocket est un petit jeu où vous controllez une fusée.
 
 ![preview.png preview](https://raw.githubusercontent.com/valentinpx/rocket/master/preview.png)
