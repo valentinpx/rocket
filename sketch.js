@@ -1,5 +1,5 @@
 const colors = ["#FFCB60", "#926D27", "#75571F", "#876A32", "#B68831"];
-const path = "/rocket.png";
+const path = "https://raw.githubusercontent.com/valentinpx/rocket/master/rocket.png";
 
 var game_over = 0;
 var rocket;
